@@ -1,0 +1,1 @@
+Exec xp_readerrorlog 0,1, N'login failed'
