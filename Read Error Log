@@ -1,4 +1,4 @@
-Declare @starttime datetime = dateadd(minute,-20, getdate())
+Declare @starttime datetime = dateadd(minute,-20, getdate()) -- Check the past 20 minutes for example
 Declare @endtime datetime = getdate()
 
 Drop table if exists #errorlog
