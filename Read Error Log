@@ -1,0 +1,15 @@
+Declare @starttime datetime = dateadd(minute,-20, getdate())
+Declare @endtime datetime = getdate()
+
+Drop table if exists #errorlog
+Create table #errorlog (logdate datetime, processinfo nvarchar(50), [Text] nvarchar(max) );
+
+Insert into #errorlog (logdate, processinfo, [text])
+Exec xp_readerrorlog 0,1, null, null, @starttime, @endtime, N'desc'\
+
+-- Now filter for the error messages we want to focus on 
+
+select * from #errorlog
+where 
+[text] like N'%failed%' or
+[text] like '%databasename%'
