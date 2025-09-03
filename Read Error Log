@@ -13,3 +13,4 @@ select * from #errorlog
 where 
 [text] like N'%failed%' or
 [text] like '%databasename%'
+Order By LogDate Desc;
